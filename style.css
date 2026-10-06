@@ -1,0 +1,312 @@
+/* Kit de Planejamento de Aula BNCC 2027 — página de vendas estática.
+   Sem build, sem fonte externa, sem dependência — abre em qualquer navegador. */
+
+:root {
+  --color-paper: #faf6ee;
+  --color-paper-raised: #fffdf8;
+  --color-ink: #20271f;
+  --color-ink-soft: #4b5347;
+  --color-primary: #1f6f5c;
+  --color-primary-dark: #154d40;
+  --color-accent: #c65d3b;
+  --color-line: #ddd4bf;
+  --color-code-bg: #eadfc4;
+  --color-pix: #0f9d78;
+  --color-card: #20271f;
+
+  --font-display: Iowan Old Style, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-base: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  --text-h1: clamp(1.9rem, 1.4rem + 2.4vw, 3.1rem);
+  --text-h2: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+  --text-h3: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+
+  --space-section: clamp(2.75rem, 2.25rem + 2vw, 5rem);
+  --space-stack: 1.1rem;
+
+  --radius: 10px;
+  --shadow-card: 0 1px 2px rgba(32, 39, 31, 0.06), 0 10px 24px -12px rgba(32, 39, 31, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  line-height: 1.18;
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: var(--text-h1); letter-spacing: -0.01em; }
+h2 { font-size: var(--text-h2); margin-top: 0; }
+h3 { font-size: var(--text-h3); margin-bottom: 0.4em; }
+
+p { margin: 0 0 var(--space-stack); }
+
+code {
+  font-family: var(--font-mono);
+  background: var(--color-code-bg);
+  color: var(--color-primary-dark);
+  padding: 0.12em 0.42em;
+  border-radius: 5px;
+  font-size: 0.88em;
+  font-weight: 600;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(31, 111, 92, 0.1), transparent 45%),
+    radial-gradient(circle at 85% 0%, rgba(198, 93, 59, 0.1), transparent 40%),
+    var(--color-primary-dark);
+  color: #fdf9ee;
+  padding: clamp(2.5rem, 2rem + 4vw, 5rem) 0 clamp(2.25rem, 2rem + 2vw, 3.5rem);
+  border-bottom: 6px solid var(--color-accent);
+}
+
+.hero h1 { color: #fff; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d8e8d2;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.3em 0.75em;
+  border-radius: 999px;
+  margin: 0 0 1rem;
+}
+
+.hero-sub {
+  color: #e6ecd8;
+  font-size: 1.05em;
+  max-width: 34em;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.85em 1.5em;
+  border-radius: var(--radius);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+
+.btn-ghost {
+  background: transparent;
+  color: #fdf9ee;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow: none;
+}
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
+
+.btn-secundario {
+  background: var(--color-paper-raised);
+  color: var(--color-primary-dark);
+  border: 1.5px solid var(--color-line);
+}
+
+.btn-pix {
+  background: var(--color-pix);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.btn-pix:hover { background: #0c8666; }
+
+.btn-card {
+  background: var(--color-card);
+  color: #fdf9ee;
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-top: 0.9rem;
+}
+.btn-card:hover { background: #343f2d; }
+
+/* ---------- Sections ---------- */
+
+main > section {
+  padding: var(--space-section) 0;
+}
+
+main > section + section {
+  border-top: 1px solid var(--color-line);
+}
+
+.numero-destaque {
+  font-family: var(--font-display);
+  font-size: 1.15em;
+  color: var(--color-primary-dark);
+  background: var(--color-paper-raised);
+  border-left: 4px solid var(--color-primary);
+  padding: 0.9em 1.1em;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-card);
+}
+
+.kit-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.kit-lista li {
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 0.95em 1.1em;
+}
+
+.objecao,
+.faq-item {
+  padding: 1.1em 0;
+}
+
+.objecao + .objecao,
+.faq-item + .faq-item {
+  border-top: 1px dashed var(--color-line);
+}
+
+.objecao h3::before {
+  content: "P.";
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  margin-right: 0.4em;
+}
+
+.faq-item h3::before {
+  content: "?";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
+.amostra {
+  background: var(--color-paper-raised);
+}
+
+.placeholder-aviso small {
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Checkout ---------- */
+
+.checkout-section {
+  background: var(--color-primary-dark);
+  color: #fdf9ee;
+  border-radius: var(--radius);
+  margin: 0 auto;
+}
+
+.checkout-section .wrap {
+  max-width: 480px;
+}
+
+.checkout-section h2 { color: #fff; }
+
+.preco-placeholder {
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  padding: 0.6em 0.9em;
+  border-radius: 8px;
+  font-size: 0.95em;
+}
+
+.checkout-bloco {
+  margin: 1.4rem 0 0.6rem;
+}
+
+.checkout-nota {
+  font-size: 0.85em;
+  color: #cfd9c6;
+  text-align: center;
+  margin: 0.4em 0 1.1em;
+}
+
+.checkout-aviso {
+  font-size: 0.82em;
+  color: #cfd9c6;
+}
+
+.stats-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.5em 0.8em;
+  z-index: 999;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  padding: 2rem 0 3rem;
+  color: var(--color-ink-soft);
+  font-size: 0.85em;
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .kit-lista { grid-template-columns: repeat(2, 1fr); }
+  .checkout-section .wrap { max-width: 560px; }
+}
+
+@media (min-width: 900px) {
+  .wrap { max-width: 760px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}
